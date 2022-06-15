@@ -45,15 +45,15 @@ plt.scatter(x_train, y_train,
 plt.show()
 '''
 
-GBF = GaussianBasisFunction(np.linspace(0,1,9),0.1)
+GBF = GaussianBasisFunction(np.linspace(-1, 1, 10), 10)
 X_train = GBF.transform(x_train)
 X_test = GBF.transform(x_test)
 
 model = BayesianLinear(alpha=1e-3, beta=2.)
 
-model.fit(X_train, y_train)
+model.fit(X_train[0:20], y_train[0:20])
 y_pred, y_std = model.predict(X_test)
-plt.scatter(x_train, y_train,
+plt.scatter(x_train[0:20], y_train[0:20],
             s=50, facecolor="none",
             edgecolors="steelblue")
 y_mean = np.mean(y_pred, axis=1)

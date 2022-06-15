@@ -28,3 +28,8 @@ class PolynomialBasisFunction:
         features = np.array(features).T
         return features
 
+poly = PolynomialBasisFunction(degree = 11)
+x = np.linspace(-1, 1, 100)
+features = poly.transform(x)
+plt.plot(x, features)
+plt.show()
